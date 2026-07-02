@@ -1,3 +1,6 @@
+REPORT FILE
+
+
 1. Executive Summary
 
 Describe that the project implements a basic webhook sender in Python. It securely sends JSON event data to a subscriber URL using HTTP POST and includes an HMAC-SHA256 signature in the request headers. The program reports whether the delivery was successful based on the HTTP response.
@@ -28,17 +31,17 @@ This project is limited to sending a webhook to a single subscriber. It does not
 
 5. Technologies Used
 
-   Technology: Purpose
+         Technology Purpose
 
-   Python 3: Programming language
+         Python 3                            Programming language
 
-   requests: Send HTTP POST requests
+         requests                            Send HTTP POST requests
 
-   json: Convert Python dictionaries to JSON
+         json                                Convert Python dictionaries to JSON
    
-   hmac: Generate secure signatures
-
-   hashlib: SHA-256 hashing
+         hmac                                Generate secure signatures
+   
+         hashlib                             SHA-256 hashing
 
 
 6. Project Structure
@@ -152,7 +155,7 @@ Example:
 
       Invalid URL                                         Delivery Failed	            Delivery Failed
 
- yYour actual output was:
+ Your actual output was:
 
       {
 
@@ -169,38 +172,62 @@ Example:
 
 Example:
 
-Challenge	Solution
-Temporary 503 response from test server	Retried later or noted that public test servers may be temporarily unavailable
-JSON conversion	Used json.dumps()
-Secure request authentication	Implemented HMAC-SHA256 signature
+      Challenge	                                        Solution
+      
+      Temporary 503 response from test server	         Retried later or noted that public test servers may be temporarily unavailable
+      
+      JSON conversion	                                 Used json.dumps()
+      
+      Secure request authentication	                     Implemented HMAC-SHA256 signature
+
+
 11. Results
 
 State only what your implementation demonstrates, for example:
 
 JSON payload successfully created.
+
 HMAC signature generated.
+
 HTTP POST request sent.
+
 Delivery status displayed to the user.
+
+
 12. Future Scope
 
 These are acceptable because they are clearly future work:
 
+
 Add a webhook receiver using Flask.
+
 Store delivery logs in a database.
+
 Support multiple subscribers.
+
 Implement automatic retries.
+
 Verify HMAC signatures on the receiver side.
+
 Build a web dashboard.
+
+
 13. Conclusion
 
 Summarize that the project demonstrates the basic workflow of webhook delivery in Python using secure signatures and HTTP POST requests. Mention that it can serve as a foundation for more advanced webhook systems.
+
 
 14. References
 
 Include only sources you actually used, for example:
 
 Python documentation
+
 Requests documentation
+
 HMAC documentation
+
 HTTP status code documentation
+
+
 15. GitHub Repository
