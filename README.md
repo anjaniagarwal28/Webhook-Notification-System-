@@ -151,7 +151,7 @@ Example:
 
       Test Case	                                        Expected Result	            Actual Result
 
-      Send webhook to https://httpbi n.org/post	          HTTP response received	      200 OK (or 503 Service Temporarily Unavailable)
+      Send webhook to https://httpbi n.org/post	    HTTP response received	            200 OK (or 503 Service Temporarily Unavailable)
 
       Invalid URL                                         Delivery Failed	            Delivery Failed
 
