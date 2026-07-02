@@ -46,14 +46,10 @@ This project is limited to sending a webhook to a single subscriber. It does not
 
 📂 Project Structure
 
-         Webhook-Delivery-System/
-         
+         Webhook-Delivery-System/ 
          │
-
          ├── webhook_sender.py
-
          ├── README.md
-
          └── requirements.txt
 
 Only include files that actually exist in our GitHub repository.
@@ -64,37 +60,21 @@ Only include files that actually exist in our GitHub repository.
          Event Data
                │
                ▼
-         
          Convert to JSON
-         
                │
-               
                ▼
-         
          Generate HMAC Signature
-         
                │
-               
                ▼
-         
          Create HTTP Headers
-         
                │
-               
                ▼
-         
          Send POST Request
-         
                │
-               
                ▼
-         
          Receive HTTP Response
-         
                │
-               
                ▼
-         
          Display Delivery Status
 
 
@@ -118,7 +98,7 @@ Include short snippets like:
 
          ]
 
-Explain that this stores the webhook endpoint and secret.
+This stores the webhook endpoint and secret.
 
    b-Event Data
 
@@ -146,7 +126,7 @@ Explain that this stores the webhook endpoint and secret.
 
          ).hexdigest()
 
-Explain that this creates an HMAC-SHA256 signature for secure transmission.
+This creates an HMAC-SHA256 signature for secure transmission.
 
    d-Sending the Request
 
@@ -205,30 +185,30 @@ Example:
 
 State only what your implementation demonstrates, for example:
 
-JSON payload successfully created.
+         🔸JSON payload successfully created.
 
-HMAC signature generated.
+         🔸HMAC signature generated.
 
-HTTP POST request sent.
+         🔸HTTP POST request sent.
 
-Delivery status displayed to the user.
+         🔸Delivery status displayed to the user.
 
 
 🔮 Future Scope
 
 These are acceptable because they are clearly future work:
 
-Add a webhook receiver using Flask.
+         🔸Add a webhook receiver using Flask.
 
-Store delivery logs in a database.
+         🔸Store delivery logs in a database.
 
-Support multiple subscribers.
+         🔸Support multiple subscribers.
 
-Implement automatic retries.
+         🔸Implement automatic retries.
 
-Verify HMAC signatures on the receiver side.
+         🔸Verify HMAC signatures on the receiver side.
 
-Build a web dashboard.
+         🔸Build a web dashboard.
 
 
 🎓 Conclusion
@@ -240,13 +220,13 @@ Summarize that the project demonstrates the basic workflow of webhook delivery i
 
 Include only sources you actually used, for example:
 
-Python documentation
+         🔸Python documentation
 
-Requests documentation
+         🔸Requests documentation
 
-HMAC documentation
+         🔸HMAC documentation
 
-HTTP status code documentation
+         🔸HTTP status code documentation
 
 
 🔗 GitHub Repository
