@@ -46,11 +46,15 @@ This project is limited to sending a webhook to a single subscriber. It does not
 
 📂 Project Structure
 
-Webhook-Delivery-System/
-│
-├── webhook_sender.py
-├── README.md
-└── requirements.txt
+         Webhook-Delivery-System/
+         
+         │
+
+         ├── webhook_sender.py
+
+         ├── README.md
+
+         └── requirements.txt
 
 Only include files that actually exist in our GitHub repository.
 
