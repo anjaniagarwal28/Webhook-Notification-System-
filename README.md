@@ -41,7 +41,7 @@ This project is limited to sending a webhook to a single subscriber. It does not
    hashlib: SHA-256 hashing
 
 
-7. Project Structure
+6. Project Structure
 
 Webhook-Delivery-System/
 │
@@ -51,7 +51,9 @@ Webhook-Delivery-System/
 
 Only include files that actually exist in your GitHub repository.
 
+
 7. System Workflow
+
 Event Data
       │
       ▼
@@ -71,6 +73,8 @@ Receive HTTP Response
       │
       ▼
 Display Delivery Status
+
+
 8. Implementation Details
 
 Include short snippets like:
