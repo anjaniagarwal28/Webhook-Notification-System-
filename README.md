@@ -62,9 +62,7 @@ Only include files that actually exist in our GitHub repository.
 ⚙️ System Workflow
 
          Event Data
-              
                │
-               
                ▼
          
          Convert to JSON
