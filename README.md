@@ -164,6 +164,7 @@ Send webhook notifications using HTTP POST.
 Include appropriate HTTP request headers.
 Display webhook delivery status returned by the server.
 Handle request failures using exception handling.
+
 📌 Scope
 Implemented
 Webhook sender
