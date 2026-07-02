@@ -1,37 +1,37 @@
-REPORT FILE
+🚀REPORT FILE
 
 
-1. Executive Summary
+📑Executive Summary
 
 Describe that the project implements a basic webhook sender in Python. It securely sends JSON event data to a subscriber URL using HTTP POST and includes an HMAC-SHA256 signature in the request headers. The program reports whether the delivery was successful based on the HTTP response.
 
 
-2. Problem Statement
+❗Problem Statement
 
 Many applications need to notify external systems automatically when an event occurs. This project demonstrates how to send such notifications securely using webhooks.
 
 
-3. Objectives
+🎯 Objectives
 
-Implement webhook delivery using Python.
+         🔸Implement webhook delivery using Python.
 
-Send event data as JSON.
+         🔸Send event data as JSON.
 
-Generate an HMAC-SHA256 signature.
+         🔸Generate an HMAC-SHA256 signature.
 
-Include custom HTTP headers.
+         🔸Include custom HTTP headers.
 
-Display the delivery status.
+         🔸Display the delivery status.
 
 
-4. Scope
+📌 Scope
 
 This project is limited to sending a webhook to a single subscriber. It does not include webhook receiving, authentication beyond HMAC generation, databases, retry mechanisms, or graphical interfaces.
 
 
-5. Technologies Used
+🛠 Technologies Used
 
-         Technology Purpose
+         Technology                          Purpose
 
          Python 3                            Programming language
 
@@ -44,7 +44,7 @@ This project is limited to sending a webhook to a single subscriber. It does not
          hashlib                             SHA-256 hashing
 
 
-6. Project Structure
+📂 Project Structure
 
 Webhook-Delivery-System/
 │
@@ -52,10 +52,10 @@ Webhook-Delivery-System/
 ├── README.md
 └── requirements.txt
 
-Only include files that actually exist in your GitHub repository.
+Only include files that actually exist in our GitHub repository.
 
 
-7. System Workflow
+⚙️ System Workflow
 
 Event Data
       │
@@ -78,72 +78,72 @@ Receive HTTP Response
 Display Delivery Status
 
 
-8. Implementation Details
+💻 Implementation Details
 
 Include short snippets like:
 
    a-Subscriber Configuration
 
-subscribers = [
-
-    {
+         subscribers = [
+         
+             {
     
-        "webhook_id": "wh01",
+                 "webhook_id": "wh01",
         
-        "url": "https://httpbin.org/post",
+                 "url": "https://httpbin.org/post",
         
-        "secret": "mysecretkey"
+                 "secret": "mysecretkey"
     
-    }
+             }
 
-]
+         ]
 
 Explain that this stores the webhook endpoint and secret.
 
    b-Event Data
 
-event_data = {
+         event_data = {
 
-    "event": "interview.booked",
+             "event": "interview.booked",
     
-    "candidate": "John Doe",
+             "candidate": "John Doe",
     
-    "date": "2026-07-01",
+             "date": "2026-07-01",
     
-    "time": "10:00 AM"
+             "time": "10:00 AM"
 
-}
+         }
 
    c-Signature Generation
 
-signature = hmac.new(
+         signature = hmac.new(
 
-    subscriber["secret"].encode(),
+             subscriber["secret"].encode(),
     
-    payload_json.encode(),
+             payload_json.encode(),
     
-    hashlib.sha256
+             hashlib.sha256
 
-).hexdigest()
+         ).hexdigest()
 
 Explain that this creates an HMAC-SHA256 signature for secure transmission.
 
    d-Sending the Request
 
-response = requests.post(
+         response = requests.post(
 
-    subscriber["url"],
+             subscriber["url"],
     
-    data=payload_json,
+             data=payload_json,
     
-    headers=headers,
+             headers=headers,
     
-    timeout=5
+             timeout=5
 
-)
+         )
 
 
-9. Testing & Validation
+🧪 Testing & Validation
 
 Only include test cases that you actually performed.
 
@@ -155,7 +155,7 @@ Example:
 
       Invalid URL                                         Delivery Failed	            Delivery Failed
 
- Your actual output was:
+ Our actual output was:
 
       {
 
@@ -168,7 +168,7 @@ Example:
       }
 
 
-10. Challenges & Solutions
+⚠️ Challenges & Solutions
 
 Example:
 
@@ -181,7 +181,7 @@ Example:
       Secure request authentication	                     Implemented HMAC-SHA256 signature
 
 
-11. Results
+📊 Results
 
 State only what your implementation demonstrates, for example:
 
@@ -194,10 +194,9 @@ HTTP POST request sent.
 Delivery status displayed to the user.
 
 
-12. Future Scope
+🔮 Future Scope
 
 These are acceptable because they are clearly future work:
-
 
 Add a webhook receiver using Flask.
 
@@ -212,12 +211,12 @@ Verify HMAC signatures on the receiver side.
 Build a web dashboard.
 
 
-13. Conclusion
+🎓 Conclusion
 
 Summarize that the project demonstrates the basic workflow of webhook delivery in Python using secure signatures and HTTP POST requests. Mention that it can serve as a foundation for more advanced webhook systems.
 
 
-14. References
+📚 References
 
 Include only sources you actually used, for example:
 
@@ -230,4 +229,6 @@ HMAC documentation
 HTTP status code documentation
 
 
-15. GitHub Repository
+🔗 GitHub Repository
+
+         Github: https://github.com/anjaniagarwal28
