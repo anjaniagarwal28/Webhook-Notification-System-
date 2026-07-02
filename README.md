@@ -98,28 +98,48 @@ subscribers = [
 Explain that this stores the webhook endpoint and secret.
 
 Event Data
+
 event_data = {
+
     "event": "interview.booked",
+    
     "candidate": "John Doe",
+    
     "date": "2026-07-01",
+    
     "time": "10:00 AM"
+
 }
+
 Signature Generation
+
 signature = hmac.new(
+
     subscriber["secret"].encode(),
+    
     payload_json.encode(),
+    
     hashlib.sha256
+
 ).hexdigest()
 
 Explain that this creates an HMAC-SHA256 signature for secure transmission.
 
 Sending the Request
+
 response = requests.post(
+
     subscriber["url"],
+    
     data=payload_json,
+    
     headers=headers,
+    
     timeout=5
+
 )
+
+
 9. Testing & Validation
 
 Only include test cases that you actually performed.
