@@ -61,25 +61,43 @@ Only include files that actually exist in our GitHub repository.
 
 ⚙️ System Workflow
 
-Event Data
-      │
-      ▼
-Convert to JSON
-      │
-      ▼
-Generate HMAC Signature
-      │
-      ▼
-Create HTTP Headers
-      │
-      ▼
-Send POST Request
-      │
-      ▼
-Receive HTTP Response
-      │
-      ▼
-Display Delivery Status
+         Event Data
+              
+               │
+               
+               ▼
+         
+         Convert to JSON
+         
+               │
+               
+               ▼
+         
+         Generate HMAC Signature
+         
+               │
+               
+               ▼
+         
+         Create HTTP Headers
+         
+               │
+               
+               ▼
+         
+         Send POST Request
+         
+               │
+               
+               ▼
+         
+         Receive HTTP Response
+         
+               │
+               
+               ▼
+         
+         Display Delivery Status
 
 
 💻 Implementation Details
