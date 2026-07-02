@@ -79,7 +79,7 @@ Display Delivery Status
 
 Include short snippets like:
 
-Subscriber Configuration
+   a-Subscriber Configuration
 
 subscribers = [
 
@@ -97,7 +97,7 @@ subscribers = [
 
 Explain that this stores the webhook endpoint and secret.
 
-Event Data
+   b-Event Data
 
 event_data = {
 
@@ -111,7 +111,7 @@ event_data = {
 
 }
 
-Signature Generation
+   c-Signature Generation
 
 signature = hmac.new(
 
@@ -125,7 +125,7 @@ signature = hmac.new(
 
 Explain that this creates an HMAC-SHA256 signature for secure transmission.
 
-Sending the Request
+   d-Sending the Request
 
 response = requests.post(
 
@@ -146,25 +146,25 @@ Only include test cases that you actually performed.
 
 Example:
 
-Test Case	Expected Result	Actual Result
-Send webhook to https://httpbin.org/post	HTTP response received	200 OK (or 503 Service Temporarily Unavailable if that's what you actually observed)
-Invalid URL	Delivery Failed	Delivery Failed
+      Test Case	                                        Expected Result	            Actual Result
 
-If your actual output was:
+      Send webhook to https://httpbi n.org/post	          HTTP response received	      200 OK (or 503 Service Temporarily Unavailable)
 
-{
-'webhook_id':'wh01',
-'event':'interview.booked',
-'delivery_status':'503 Service Temporarily Unavailable'
-}
+      Invalid URL                                         Delivery Failed	            Delivery Failed
 
-then include that exact output. Do not replace it with 200 OK unless you actually obtained that result.
+ yYour actual output was:
 
-Include screenshots of:
+      {
 
-VS Code
-Terminal output
-GitHub repository
+         'webhook_id':'wh01',
+
+         'event':'interview.booked',
+
+         'delivery_status':'503 Service Temporarily Unavailable'
+
+      }
+
+
 10. Challenges & Solutions
 
 Example:
