@@ -80,12 +80,19 @@ Display Delivery Status
 Include short snippets like:
 
 Subscriber Configuration
+
 subscribers = [
+
     {
+    
         "webhook_id": "wh01",
+        
         "url": "https://httpbin.org/post",
+        
         "secret": "mysecretkey"
+    
     }
+
 ]
 
 Explain that this stores the webhook endpoint and secret.
