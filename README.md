@@ -28,20 +28,20 @@ This project is limited to sending a webhook to a single subscriber. It does not
 
 5. Technologies Used
 
-      Technology	                        :Purpose
+   Technology: Purpose
 
-      Python 3	                   :Programming language
+   Python 3: Programming language
 
-      requests	                   :Send HTTP POST requests
+   requests: Send HTTP POST requests
 
-      json	                         :Convert Python dictionaries to JSON
+   json: Convert Python dictionaries to JSON
+   
+   hmac: Generate secure signatures
 
-      hmac	                         :Generate secure signatures
-
-      hashlib	                    :SHA-256 hashing
+   hashlib: SHA-256 hashing
 
 
-6. Project Structure
+7. Project Structure
 
 Webhook-Delivery-System/
 │
