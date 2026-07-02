@@ -1,36 +1,51 @@
 Report Structure
+
 1. Executive Summary
+   
 Describe that the project implements a basic webhook sender in Python. It securely sends JSON event data to a subscriber URL using HTTP POST and includes an HMAC-SHA256 signature in the request headers. The program reports whether the delivery was successful based on the HTTP response.
 
-2. Problem Statement
+3. Problem Statement
+   
 Many applications need to notify external systems automatically when an event occurs. This project demonstrates how to send such notifications securely using webhooks.
 
-3. Objectives
+5. Objectives
+   
 Implement webhook delivery using Python.
+
 Send event data as JSON.
+
 Generate an HMAC-SHA256 signature.
+
 Include custom HTTP headers.
+
 Display the delivery status.
 
-4. Scope
+7. Scope
+
 This project is limited to sending a webhook to a single subscriber. It does not include webhook receiving, authentication beyond HMAC generation, databases, retry mechanisms, or graphical interfaces.
 
-5. Technologies Used
+8. Technologies Used
+
 Technology	                      Purpose
+
 Python 3	                        Programming language
+
 requests	                        Send HTTP POST requests
+
 json	                             Convert Python dictionaries to JSON
+
 hmac	                              Generate secure signatures
+
 hashlib	SHA-256 hashing
 
-6. Project Structure
+9. Project Structure
 Webhook-Delivery-System/
 │
 ├── webhook_sender.py
 ├── README.md
 └── requirements.txt
 
-7. System Workflow
+10. System Workflow
 Event Data
       │
       ▼
@@ -51,7 +66,7 @@ Receive HTTP Response
       ▼
 Display Delivery Status
 
-8. Implementation Details
+11. Implementation Details
 Include short snippets like:
       a-Subscriber Configuration
 subscribers = [
@@ -84,7 +99,7 @@ response = requests.post(
     timeout=5
 )
 
-9. Testing & Validation
+12. Testing & Validation
 Only include test cases that you actually performed.
 
 Example:
