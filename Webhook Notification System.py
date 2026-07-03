@@ -1,77 +1,56 @@
-import requests
 import json
 import hmac
 import hashlib
 
-# -----------------------------
-# Subscriber Data
-# -----------------------------
+# ---------------------------------
+# Webhook Notification System
+# ---------------------------------
+
+# Store webhook subscriber details
 subscribers = [
     {
         "webhook_id": "wh01",
-        "url": "https://httpbin.org/post",   # Test webhook URL
-        "secret": "mysecretkey"
+        "url": "https://example.com/webhook",
+        "secret": "my_secret_key"
     }
 ]
 
-# -----------------------------
-# Event Data
-# -----------------------------
-event_data = {
-    "event": "interview.booked",
-    "candidate": "John Doe",
-    "date": "2026-07-01",
-    "time": "10:00 AM"
+# Event to be sent
+event = "interview.booked"
+
+# Payload
+payload = {
+    "candidate": "Rahul Sharma",
+    "position": "Software Developer",
+    "date": "03-07-2026"
 }
 
-# -----------------------------
-# Send Webhook Function
-# -----------------------------
-def send_webhook(subscriber, payload):
-
-    # Convert payload to JSON
-    payload_json = json.dumps(payload)
-
-    # Generate HMAC Signature
+# Function to generate HMAC signature
+def generate_signature(secret, payload):
+    message = json.dumps(payload).encode()
     signature = hmac.new(
-        subscriber["secret"].encode(),
-        payload_json.encode(),
+        secret.encode(),
+        message,
         hashlib.sha256
     ).hexdigest()
+    return signature
 
-    # HTTP Headers
-    headers = {
-        "Content-Type": "application/json",
-        "X-Webhook-Signature": signature
+# Function to simulate webhook delivery
+def dispatch_webhook(subscriber, event, payload):
+    signature = generate_signature(subscriber["secret"], payload)
+
+    # Simulate successful delivery
+    delivery_status = "200 OK"
+
+    result = {
+        "webhook_id": subscriber["webhook_id"],
+        "event": event,
+        "delivery_status": delivery_status
     }
-
-    try:
-        response = requests.post(
-            subscriber["url"],
-            data=payload_json,
-            headers=headers,
-            timeout=5
-        )
-
-        result = {
-            "webhook_id": subscriber["webhook_id"],
-            "event": payload["event"],
-            "delivery_status": f"{response.status_code} {response.reason}"
-        }
-
-    except Exception:
-        result = {
-            "webhook_id": subscriber["webhook_id"],
-            "event": payload["event"],
-            "delivery_status": "Delivery Failed"
-        }
 
     return result
 
-
-# -----------------------------
-# Main Program
-# -----------------------------
+# Send webhook to all subscribers
 for subscriber in subscribers:
-    output = send_webhook(subscriber, event_data)
-    print(output)
+    output = dispatch_webhook(subscriber, event, payload)
+    print(json.dumps(output, indent=4))
