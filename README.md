@@ -96,98 +96,99 @@ Working Process
 
 The generated signature ensures:
 
-Data integrity
-Message authenticity
-Protection against payload tampering
+- Data integrity
+- Message authenticity
+- Protection against payload tampering
+
 6. Simulating Webhook Delivery
-def dispatch_webhook(subscriber, event, payload):
-Explanation
+
+        def dispatch_webhook(subscriber, event, payload):
 
 This function simulates sending the webhook notification to a subscriber.
 
 Inside the function:
 
-signature = generate_signature(subscriber["secret"], payload)
+        signature = generate_signature(subscriber["secret"], payload)
 
 The program first generates the HMAC signature using the subscriber's secret key.
-
 Simulated Delivery Status
-delivery_status = "200 OK"
+
+        delivery_status = "200 OK"
 
 Instead of making an actual HTTP POST request, the program simulates a successful webhook response.
 
 The HTTP status 200 OK indicates that the webhook was delivered successfully.
 
 7. Preparing the Output
-result = {
-    "webhook_id": subscriber["webhook_id"],
-    "event": event,
-    "delivery_status": delivery_status
-}
-Explanation
+
+        result = {
+            "webhook_id": subscriber["webhook_id"],
+            "event": event,
+            "delivery_status": delivery_status
+           }
 
 A dictionary is created to store the final webhook delivery result.
 
 It contains:
 
-Webhook ID
-Event Name
-Delivery Status
+- Webhook ID
+- Event Name
+- Delivery Status
 
 This output represents the final response of the webhook notification system.
 
 8. Returning the Result
-return result
-Explanation
+- return result
 
 The function returns the generated result dictionary to the main program.
 
 9. Sending Notifications
-for subscriber in subscribers:
-    output = dispatch_webhook(subscriber, event, payload)
-    print(json.dumps(output, indent=4))
-Explanation
+
+        for subscriber in subscribers:
+            output = dispatch_webhook(subscriber, event, payload)
+            print(json.dumps(output, indent=4))
 
 The program iterates through the list of subscribers.
 
 For each subscriber:
-
-Generates the HMAC signature.
-Simulates webhook delivery.
-Creates the response.
-Displays the output in a formatted JSON structure.
+- Generates the HMAC signature.
+- Simulates webhook delivery.
+- Creates the response.
+- Displays the output in a formatted JSON structure.
 
 The indent=4 parameter improves readability by printing the JSON in a well-structured format.
 
 Program Workflow
-Start
-   │
-   ▼
-Import Required Libraries
-   │
-   ▼
-Store Subscriber Information
-   │
-   ▼
-Create Event Payload
-   │
-   ▼
-Generate HMAC-SHA256 Signature
-   │
-   ▼
-Simulate Webhook Delivery
-   │
-   ▼
-Create Result Dictionary
-   │
-   ▼
-Display JSON Output
-   │
-   ▼
-End
+        
+         Start
+           │
+           ▼
+        Import Required Libraries
+           │
+           ▼
+        Store Subscriber Information
+           │
+           ▼
+        Create Event Payload
+           │
+           ▼
+        Generate HMAC-SHA256 Signature
+           │
+           ▼
+        Simulate Webhook Delivery
+           │
+           ▼
+        Create Result Dictionary
+           │
+           ▼
+        Display JSON Output
+           │
+           ▼
+        End
 Output
-{
-    "webhook_id": "wh01",
-    "event": "interview.booked",
-    "delivery_status": "200 OK"
-}
+        
+        {
+            "webhook_id": "wh01",
+            "event": "interview.booked",
+            "delivery_status": "200 OK"
+        }
