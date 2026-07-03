@@ -3,7 +3,7 @@ WEBHOOK NOTIFICATION SYSTEM
 The Webhook Notification System is implemented using Python and demonstrates the basic workflow of a webhook notification. The application stores subscriber information, creates an event payload, generates a secure HMAC-SHA256 signature, simulates webhook delivery, and displays the delivery status in JSON format.
 
 
-1. Importing Required Libraries
+⭐ Importing Required Libraries
 
         import json
         import hmac
@@ -20,7 +20,7 @@ The program begins by importing three built-in Python libraries:
 - These libraries are sufficient to implement a basic webhook simulation without relying on external packages.
 
 
-2. Storing Webhook Subscriber Information
+⭐ Storing Webhook Subscriber Information
 
         subscribers = [
             {
@@ -41,7 +41,7 @@ The subscribers list stores information about webhook subscribers. Each subscrib
 Although only one subscriber is included in this implementation, the list structure allows additional subscribers to be added easily.
 
 
-3. Defining the Event
+⭐ Defining the Event
 
         event = "interview.booked"
 
@@ -54,7 +54,7 @@ In this project, the event is:
 This indicates that an interview has been successfully scheduled.
 
 
-4. Creating the Payload
+⭐ Creating the Payload
 
         payload = {
             "candidate": "Rahul Sharma",
@@ -73,7 +73,7 @@ It includes:
 Before transmission, the payload is converted into JSON format.
 
 
-5. Generating the HMAC Signature
+⭐ Generating the HMAC Signature
 def generate_signature(secret, payload):
 
            message = json.dumps(payload).encode()
@@ -100,7 +100,7 @@ The generated signature ensures:
 - Message authenticity
 - Protection against payload tampering
 
-6. Simulating Webhook Delivery
+⭐ Simulating Webhook Delivery
 
         def dispatch_webhook(subscriber, event, payload):
 
@@ -119,7 +119,7 @@ Instead of making an actual HTTP POST request, the program simulates a successfu
 
 The HTTP status 200 OK indicates that the webhook was delivered successfully.
 
-7. Preparing the Output
+⭐ Preparing the Output
 
         result = {
             "webhook_id": subscriber["webhook_id"],
@@ -137,12 +137,12 @@ It contains:
 
 This output represents the final response of the webhook notification system.
 
-8. Returning the Result
+⭐ Returning the Result
 - return result
 
 The function returns the generated result dictionary to the main program.
 
-9. Sending Notifications
+⭐ Sending Notifications
 
         for subscriber in subscribers:
             output = dispatch_webhook(subscriber, event, payload)
