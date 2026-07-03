@@ -1,23 +1,23 @@
 """
 config.py
-Stores subscriber configuration and loads secrets from environment variables.
+Loads environment variables and stores subscriber details.
 """
 
 import os
+from dotenv import load_dotenv
 
-# Default demo secrets (used if .env variables are not set)
-secret1 = os.getenv("WEBHOOK_SECRET_1", "demo_secret_1")
-secret2 = os.getenv("WEBHOOK_SECRET_2", "demo_secret_2")
+# Load variables from .env
+load_dotenv()
 
 subscribers = [
     {
         "webhook_id": "wh01",
         "url": "https://httpbin.org/post",
-        "secret": secret1
+        "secret": os.getenv("WEBHOOK_SECRET_1")
     },
     {
         "webhook_id": "wh02",
         "url": "https://httpbin.org/post",
-        "secret": secret2
+        "secret": os.getenv("WEBHOOK_SECRET_2")
     }
 ]
