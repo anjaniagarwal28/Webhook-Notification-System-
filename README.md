@@ -12,7 +12,6 @@ The Webhook Notification System is implemented using Python and demonstrates the
         import hashlib
 
 The program begins by importing three built-in Python libraries:
-
 json: Converts Python dictionaries into JSON format, which is the standard format for exchanging data between applications.
 
 hmac: Generates a Hash-based Message Authentication Code (HMAC) to verify the authenticity and integrity of the webhook payload.
