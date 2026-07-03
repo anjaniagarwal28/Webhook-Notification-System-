@@ -12,13 +12,14 @@ The Webhook Notification System is implemented using Python and demonstrates the
         import hashlib
 
 The program begins by importing three built-in Python libraries:
-json: Converts Python dictionaries into JSON format, which is the standard format for exchanging data between applications.
 
-hmac: Generates a Hash-based Message Authentication Code (HMAC) to verify the authenticity and integrity of the webhook payload.
+- json: Converts Python dictionaries into JSON format, which is the standard format for exchanging data between applications.
 
-hashlib: Provides cryptographic hash functions such as SHA-256, which is used to generate a secure signature.
+- hmac: Generates a Hash-based Message Authentication Code (HMAC) to verify the authenticity and integrity of the webhook payload.
 
-These libraries are sufficient to implement a basic webhook simulation without relying on external packages.
+- hashlib: Provides cryptographic hash functions such as SHA-256, which is used to generate a secure signature.
+
+- These libraries are sufficient to implement a basic webhook simulation without relying on external packages.
 
 
 2. Storing Webhook Subscriber Information
@@ -39,28 +40,32 @@ These libraries are sufficient to implement a basic webhook simulation without r
 
 The subscribers list stores information about webhook subscribers. Each subscriber is represented as a dictionary containing:
 
-webhook_id – A unique identifier for the subscriber.
+- webhook_id – A unique identifier for the subscriber.
 
-url – The webhook endpoint where notifications would be sent.
+- url – The webhook endpoint where notifications would be sent.
 
-secret – A private key used to generate an HMAC signature for secure communication.
+- secret – A private key used to generate an HMAC signature for secure communication.
 
 Although only one subscriber is included in this implementation, the list structure allows additional subscribers to be added easily.
 
+
 3. Defining the Event
-event = "interview.booked"
-Explanation
+
+        event = "interview.booked"
 
 The event variable represents the webhook event that will be delivered to subscribers.
 
 In this project, the event is:
 
-interview.booked
+        interview.booked
 
 This indicates that an interview has been successfully scheduled.
 
+
 4. Creating the Payload
+
 payload = {
+
     "candidate": "Rahul Sharma",
     "position": "Software Developer",
     "date": "03-07-2026"
