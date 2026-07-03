@@ -6,9 +6,7 @@ The Webhook Notification System is implemented using Python and demonstrates the
 1. Importing Required Libraries
 
         import json
-
         import hmac
-
         import hashlib
 
 The program begins by importing three built-in Python libraries:
@@ -25,17 +23,11 @@ The program begins by importing three built-in Python libraries:
 2. Storing Webhook Subscriber Information
 
         subscribers = [
-
             {
-
                   "webhook_id": "wh01",
-
                   "url": "https://example.com/webhook",
-
                   "secret": "my_secret_key"
-
              }
-
         ]
 
 The subscribers list stores information about webhook subscribers. Each subscriber is represented as a dictionary containing:
@@ -64,43 +56,43 @@ This indicates that an interview has been successfully scheduled.
 
 4. Creating the Payload
 
-payload = {
-
-    "candidate": "Rahul Sharma",
-    "position": "Software Developer",
-    "date": "03-07-2026"
-}
-Explanation
+        payload = {
+            "candidate": "Rahul Sharma",
+            "position": "Software Developer",
+            "date": "03-07-2026"
+        }
 
 The payload contains the information associated with the event.
 
 It includes:
 
-Candidate Name
-Job Position
-Interview Date
+        Candidate Name
+        Job Position
+        Interview Date
 
 Before transmission, the payload is converted into JSON format.
 
+
 5. Generating the HMAC Signature
 def generate_signature(secret, payload):
-    message = json.dumps(payload).encode()
-    signature = hmac.new(
-        secret.encode(),
-        message,
-        hashlib.sha256
-    ).hexdigest()
-    return signature
-Explanation
+
+           message = json.dumps(payload).encode()
+           signature = hmac.new(
+                   secret.encode(),
+                    message,
+                    hashlib.sha256
+            ).hexdigest()
+            return signature
+
 
 This function generates a secure HMAC-SHA256 signature for the payload.
 
 Working Process
-Converts the payload into a JSON string.
-Encodes the JSON data into bytes.
-Uses the subscriber's secret key.
-Applies the SHA-256 hashing algorithm.
-Generates a hexadecimal signature.
+- Converts the payload into a JSON string.
+- Encodes the JSON data into bytes.
+- Uses the subscriber's secret key.
+- Applies the SHA-256 hashing algorithm.
+- Generates a hexadecimal signature.
 
 The generated signature ensures:
 
