@@ -1,28 +1,37 @@
 """
-signing.py
-Generates HMAC-SHA256 signature for webhook payload.
+Generate secure HMAC Signature
 """
 
 import json
 import hmac
 import hashlib
-from typing import Dict, Any
+import time
+import uuid
 
 
-def generate_signature(secret: str, payload: Dict[str, Any]) -> str:
+def generate_signature(secret: str, payload: dict):
     """
-    Generate HMAC-SHA256 signature.
+    Generates HMAC-SHA256 signature.
     """
+
+    timestamp = str(int(time.time()))
+    nonce = str(uuid.uuid4())
+
+    signed_payload = {
+        "timestamp": timestamp,
+        "nonce": nonce,
+        "data": payload
+    }
 
     message = json.dumps(
-        payload,
+        signed_payload,
         sort_keys=True
-    ).encode("utf-8")
+    ).encode()
 
     signature = hmac.new(
-        secret.encode("utf-8"),
+        secret.encode(),
         message,
         hashlib.sha256
     ).hexdigest()
 
-    return signature
+    return signature, timestamp, nonce
