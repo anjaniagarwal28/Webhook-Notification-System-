@@ -1,52 +1,65 @@
-WEBHOOK NOTIFICATION SYSTEM
+🚀 Webhook Notification System
 
-A Python-based Webhook Notification System that securely sends event notifications to multiple subscribers using HTTP POST requests. The project generates HMAC-SHA256 signatures to verify payload integrity, includes timestamps for improved security, and reports delivery status based on the server response.
+⭐ Overview
 
-⭐ Features
+This project implements a simple outbound webhook notification system in Python.
 
-- Multiple webhook subscribers
-- HMAC-SHA256 payload signing
-- Timestamp for replay protection
-- HTTP POST webhook delivery
-- Retry mechanism
-- Error handling
-- Environment variables for secret keys
+The system:
 
-⭐ Technologies Used
+- Stores multiple webhook subscribers
+- Signs webhook payloads using HMAC SHA-256
+- Sends POST requests to subscribers
+- Implements retry logic
+- Uses environment variables to protect secret keys
 
-- Python 3
-- requests
+---
+
+⭐ Technologies
+
+- Python 3.14
+- Requests
 - python-dotenv
-- hmac
-- hashlib
-- json
+
+---
 
 ⭐ Project Structure
 
 ```
-WebhookNotificationSystem/
-│── app.py
-│── config.py
-│── dispatcher.py
-│── signing.py
-│── requirements.txt
-│── .env
-│── README.md
+app.py
+config.py
+dispatcher.py
+signing.py
+requirements.txt
+.env.example
+.gitignore
+README.md
 ```
+
+---
 
 ⭐ Installation
 
-Install the required packages:
+Clone the repository:
 
 ```bash
-pip install requests python-dotenv
+git clone https://github.com/anjaniagarwal28/Webhook-Notification-System-.git
 ```
 
-⭐ Run the Project
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Create a `.env` file using `.env.example`.
+
+Run:
 
 ```bash
 py app.py
 ```
+
+---
 
 ⭐ Sample Output
 
@@ -59,7 +72,16 @@ py app.py
 }
 ```
 
+---
+
+⭐ Security
+
+- Secret keys are stored in `.env`.
+- `.env` is excluded using `.gitignore`.
+- `.env.example` is provided as a template.
+
+---
+
 ⭐ Author
 
 Anjani Agarwal
-
