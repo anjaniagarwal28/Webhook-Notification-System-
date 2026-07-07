@@ -1,34 +1,32 @@
+"""
+config.py
+Loads environment variables and stores subscriber details.
+"""
+
 import os
 from dotenv import load_dotenv
 
+# Load variables from .env
 load_dotenv()
 
-WEBHOOK_SECRET_1 = os.getenv("WEBHOOK_SECRET_1")
-WEBHOOK_SECRET_2 = os.getenv("WEBHOOK_SECRET_2")
+secret1 = os.getenv("WEBHOOK_SECRET_1")
+secret2 = os.getenv("WEBHOOK_SECRET_2")
 
-# Validate environment variables
-if not WEBHOOK_SECRET_1 or not WEBHOOK_SECRET_2:
+# Validate secrets
+if not secret1 or not secret2:
     raise ValueError(
-        "Webhook secrets are missing. Please configure your .env file."
+        "Environment variables WEBHOOK_SECRET_1 and WEBHOOK_SECRET_2 must be set."
     )
 
 subscribers = [
     {
         "webhook_id": "wh01",
         "url": "https://httpbin.org/post",
-        "secret": WEBHOOK_SECRET_1
+        "secret": secret1,
     },
     {
         "webhook_id": "wh02",
         "url": "https://httpbin.org/post",
-        "secret": WEBHOOK_SECRET_2
-    }
+        "secret": secret2,
+    },
 ]
-
-event = "interview.booked"
-
-payload = {
-    "candidate": "Rahul Sharma",
-    "position": "Software Developer",
-    "date": "03-07-2026"
-}
