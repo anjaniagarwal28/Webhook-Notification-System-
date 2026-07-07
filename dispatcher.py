@@ -1,51 +1,86 @@
+"""
+dispatcher.py
+Dispatches webhook requests.
+"""
+
+import time
 import requests
+
 from signing import generate_signature
 
 
 def dispatch_webhook(subscriber, event, payload):
-    signature = generate_signature(
-        subscriber["secret"],
-        payload
-    )
+    """
+    Send webhook with retry mechanism.
+    """
 
-    headers = {
-        "Content-Type": "application/json",
-        "X-Signature": signature
-    }
+    try:
+        signature, timestamp, nonce = generate_signature(
+            subscriber["secret"],
+            payload
+        )
 
-    max_retries = 3
+        body = {
+            "event": event,
+            "timestamp": timestamp,
+            "nonce": nonce,
+            "payload": payload
+        }
 
-    for attempt in range(max_retries):
+        headers = {
+            "Content-Type": "application/json",
+            "X-Webhook-Signature": signature
+        }
 
-        try:
-            response = requests.post(
-                subscriber["url"],
-                json=payload,
-                headers=headers,
-                timeout=5
-            )
+        retries = 3
 
-            response.raise_for_status()
+        for attempt in range(1, retries + 1):
 
-            return {
-                "webhook_id": subscriber["webhook_id"],
-                "event": event,
-                "status_code": response.status_code,
-                "delivery_status": "Success",
-                "signature": signature
-            }
+            try:
+                response = requests.post(
+                    subscriber["url"],
+                    json=body,
+                    headers=headers,
+                    timeout=5
+                )
 
-        except requests.exceptions.Timeout:
-            print(f"Timeout on attempt {attempt + 1}")
+                response.raise_for_status()
 
-        except requests.exceptions.ConnectionError:
-            print(f"Connection error on attempt {attempt + 1}")
+                return {
+                    "webhook_id": subscriber["webhook_id"],
+                    "event": event,
+                    "status_code": response.status_code,
+                    "delivery_status": "Success",
+                    "signature": signature
+                }
 
-        except requests.exceptions.HTTPError:
-            print(f"HTTP error on attempt {attempt + 1}")
+            except requests.exceptions.Timeout:
+                print(f"Timeout on attempt {attempt}")
 
-    return {
-        "webhook_id": subscriber["webhook_id"],
-        "event": event,
-        "delivery_status": "Failed after retries"
-    }
+            except requests.exceptions.ConnectionError:
+                print(f"Connection Error on attempt {attempt}")
+
+            except requests.exceptions.HTTPError:
+                print(f"HTTP Error on attempt {attempt}")
+
+            except requests.exceptions.RequestException:
+                print(f"Request Error on attempt {attempt}")
+
+            time.sleep(2 ** (attempt - 1))
+
+        return {
+            "webhook_id": subscriber["webhook_id"],
+            "event": event,
+            "delivery_status": "Failed after retries"
+        }
+
+    except KeyError as e:
+        return {
+            "error": f"Missing field: {e}"
+        }
+
+    except Exception as e:
+        return {
+            "error": str(e)
+        }
+        
