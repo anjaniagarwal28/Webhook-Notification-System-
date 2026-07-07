@@ -1,6 +1,2 @@
 requests
-<<<<<<< HEAD
 python-dotenv
-=======
-python-dotenv
->>>>>>> be47dc0c1c1a52988733a6c99359a43807e7b218
